@@ -1,5 +1,5 @@
 // @license
-// Copyright (c) 2019 - 2025 Dr. Gabriel Gatzsche. All Rights Reserved.
+// Copyright (c) ggsuite. All Rights Reserved.
 //
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
@@ -7,9 +7,8 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:gg_console_colors/gg_console_colors.dart';
 import 'package:gg_capture_print/gg_capture_print.dart';
-
+import 'package:gg_console_colors/gg_console_colors.dart';
 import 'package:test/test.dart';
 
 import '../../bin/gg_template.dart';
@@ -21,8 +20,8 @@ void main() {
     test('should be executable', () async {
       // Execute bin/gg_template.dart and check if it prints help
       final result = await Process.run(
-        './bin/gg_template.dart',
-        ['my-command'],
+        'dart',
+        ['./bin/gg_template.dart', 'my-command'],
         stdoutEncoding: utf8,
         stderrEncoding: utf8,
       );

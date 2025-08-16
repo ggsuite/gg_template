@@ -1,12 +1,13 @@
 // @license
-// Copyright (c) 2019 - 2025 Dr. Gabriel Gatzsche. All Rights Reserved.
+// Copyright (c) ggsuite. All Rights Reserved.
 //
 // Use of this source code is governed by terms that can be
 // found in the LICENSE file in the root of this package.
 
 import 'package:args/command_runner.dart';
-import './commands/my_command.dart';
 import 'package:gg_log/gg_log.dart';
+
+import './commands/my_command.dart';
 
 /// The command line interface for GgTemplate
 class GgTemplate extends Command<dynamic> {
