@@ -10,3 +10,4 @@
 ### Changed
 
 - Replace copyright header, update extensions and settings
+- Enable pipeline caching

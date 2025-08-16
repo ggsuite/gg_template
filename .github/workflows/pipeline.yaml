@@ -10,18 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup git user
-        run: |
-          git config --global user.email "githubaction@inlavigo.com"
-          git config --global user.name "Github Action"
-
-      - name: Set up SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
@@ -35,27 +23,27 @@ jobs:
             echo "is_flutter=false" >> "$GITHUB_ENV"
           fi
 
-      # - name: Cache Flutter Dependencies
-      #   if: env.is_flutter == 'true'
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       ~/.pub-cache
-      #       **/pubspec.lock
-      #     key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-flutter-
-      #
-      # - name: Cache Dart Dependencies
-      #   if: env.is_flutter == 'false'
-      #   uses: actions/cache@v4
-      #   with:
-      #     path: |
-      #       ~/.pub-cache
-      #       **/pubspec.lock
-      #     key: ${{ runner.os }}-dart-${{ hashFiles('**/pubspec.yaml') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-dart-
+      - name: Cache Flutter Dependencies
+        if: env.is_flutter == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+            **/pubspec.lock
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-
+
+      - name: Cache Dart Dependencies
+        if: env.is_flutter == 'false'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+            **/pubspec.lock
+          key: ${{ runner.os }}-dart-${{ hashFiles('**/pubspec.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-dart-
 
       - name: Set up Flutter
         if: env.is_flutter == 'true'

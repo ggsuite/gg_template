@@ -25,12 +25,7 @@ void main() {
       // .......................................................................
       group('should print a usage description', () {
         test('when called args=[--help]', () async {
-          capturePrint(
-            ggLog: messages.add,
-            code: () => runner.run(
-              ['--help'],
-            ),
-          );
+          capturePrint(ggLog: messages.add, code: () => runner.run(['--help']));
 
           expect(messages.last, contains('Available commands:'));
           expect(
@@ -44,9 +39,7 @@ void main() {
       group('should throw', () {
         test('if input is missing', () async {
           await expectLater(
-            runner.run(
-              ['my-command'],
-            ),
+            runner.run(['my-command']),
             throwsA(
               isA<ArgumentError>().having(
                 (e) => e.message,

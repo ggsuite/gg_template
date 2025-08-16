@@ -11,9 +11,7 @@ import 'package:gg_log/gg_log.dart';
 /// An example command
 class MyCommand extends Command<dynamic> {
   /// Constructor
-  MyCommand({
-    required this.ggLog,
-  }) {
+  MyCommand({required this.ggLog}) {
     _addArgs();
   }
 
