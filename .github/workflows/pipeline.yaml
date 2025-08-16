@@ -79,5 +79,5 @@ jobs:
       - name: Did you execute »gg do push«?
         run: gg did push
 
-      - name: Will the tests pass on Ubuntu too?
+      - name: Do the tests work?
         run: gg can commit --force
